@@ -1,0 +1,12 @@
+{% extends "blog/list.html" %}
+
+        {% block header_category %}
+        {% endblock %}
+        {% block paginator_prev %}
+          {% url 'blog:home' page_obj.previous_page_number %}
+        {% endblock %}
+        {% block paginator_next %}
+          {% url 'blog:home' page_obj.next_page_number %}
+        {% endblock %}
+
+        

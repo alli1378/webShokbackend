@@ -1,0 +1,72 @@
+{% load static %}
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'Product/bootstrap-rtl.css' %}">
+    <link rel="stylesheet" href="{% static 'Product/style2.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-4   col-md-6 col-sm-11 mt-5">
+                <div class="card card-rooket" >
+                    <div class="img-rook">
+
+                        <img class=" img-rooket " src="{{product.thumbnail.url}}" alt="">
+                    </div>
+                    <div class="card-body  cs-card " >
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <!-- <p card-text>طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک </p> -->
+                        <span class=" mx-3  mb-1">سایز:</span>
+                        <div class="d-flex justify-content-between mx-5 ">
+                            {% for sizee in product.sizeshose.all  %}
+                            
+                            <button class=" btn btn-light">{{sizee.count}}</button>
+                            <button class=" btn btn-light">{{sizee.size}}</button>
+                            {% endfor %}
+                            
+                            
+                        </div>
+                        
+                        <span class=" mx-3 mt-3">رنگ:</span>
+                        <div class="row mx-5 ">
+                            <span class=" col-sm-2 ml-2 mt-2  cir-color cir-color1">{{product.color}}</span>
+                            
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mx-3 mt-3">
+                            <div> قیمت: 3000 تومان</div>
+                            
+                        </div>
+                        <!-- <div class="d-flex justify-content-center mx-5 mt-3">
+                        </div> -->
+                        <form action="{% url 'cart:cart-add' product.id %}"method='Post'>
+                            {% csrf_token %}
+                            <button class="btn "  style="background: #607D8B; color: white;">افزودن به سبد خرید</button>
+                            {{ form.quantity}}
+                        </form>
+                        <a href="{% url 'product:favourite_add' product.id %}" class="btn btn-info">مورد علاقه</a>
+                    </div>
+
+                    <!-- <div class="card-footer d-flex justify-content-between align-items-center ">
+                        <div class="btn-grup mr-3">
+                            <button class="btn btn-sm "  style="background: #9bdc28;">خرید</button>
+                            <button class="btn btn-sm  btn-secondary mr-3" >نمایش</button>
+                        </div>
+                        <small class="badge badge-pill btn-warning">۹دقیقه</small>
+                    </div> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+  </body>
+  </html>

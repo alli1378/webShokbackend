@@ -1,0 +1,42 @@
+{% extends "blog/base.html" %}
+{% load comment_tags %}
+
+{% load static %}
+{% block main %}
+<header class="masthead" style="background-image: url('{{article.thumbnail.url}}')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1 style="margin-bottom:3rem">{{article.title}}</h1>
+          <time>{{article.jpublish}}</time>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto text-justify " style="direction:rtl">
+        {{article.description|safe}}
+        <hr>
+        <a href="{% url 'blog:favourite_add' article.id %}" class="btn btn-outline-info mt-1">
+          مورد علاقه
+        </a>
+        {% render_comments article request %}
+        {% include_static  %}
+        {% include_bootstrap  %}
+      </div>
+    </div>
+
+  </div>
+</article>
+
+
+
+
+
+{% endblock %}

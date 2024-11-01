@@ -1,0 +1,28 @@
+{% extends "registration/base.html" %}
+ {% block title %}{%block title-meta%}
+  حذف مقاله
+ {% endblock %}
+ {% endblock %}
+ {% block main %}
+ <div class="col-md-6">
+   <div class="card card-primary">
+     <div class="card-header">
+       <h3 class="card-title mb-0 float-left">
+           حذف مقاله
+       </h3>
+     </div>
+   </div>
+   <div class="card-body">
+     <form  method="post">{% csrf_token %}
+       <p>آیا میخواهید {{object}} مقاله حذف شود</p>
+       <input class='btn btn-danger' type="submit" name="" value="حذف">
+     </form>
+     <a href="{% url 'account:home' %}">
+       <button class='btn btn-success'  name="" >
+         لغو
+       </button>
+     </a>
+   </div>
+ </div>
+
+ {% endblock %}

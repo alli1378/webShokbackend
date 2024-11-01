@@ -1,0 +1,46 @@
+{% extends "registration/base.html" %}
+{% load crispy_forms_tags %}
+ {% block title %}{%block title-meta%}
+ لیست دسته بندی
+ {% endblock %}
+ {% endblock %}
+{% block main %}
+    <div class="col-md-12">
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title mb-0 float-left">
+              افزودن مقاله
+          </h3>
+        </div>
+      </div>
+      <div class="card-body">
+        <form  method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-6">
+              {{form.title|as_crispy_field}}
+            </div>
+            <div class="col-6">
+              {{form.slug|as_crispy_field}}
+            </div>
+
+            <div class="col-6">
+              {{form.parent|as_crispy_field}}
+            </div>
+            
+            <div class="col-6">
+              {{form.position|as_crispy_field}}
+            </div>
+
+            <div class="col-6">
+              {{form.status|as_crispy_field}}
+            </div>
+
+          </div>
+          <button class="btn btn-info" name="button"> ارسال مقاله</button>
+        </form>
+
+      </div>
+    </div>
+
+{% endblock %}

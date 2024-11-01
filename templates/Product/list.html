@@ -1,0 +1,68 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block main %}
+<header class="masthead" style="background-image: url('{% static 'blog/img/home-bg.jpg' %}')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>حجت</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {% block header_category %}
+
+        {% endblock %}
+
+        {% for product in object_list  %}
+          <div class="post-preview">
+            <a  href="{% url 'product:detail' product.slug %}">
+
+              <div class="d-flex justify-content-end">
+                <h3 class="post-subtitle" style="  font-size:1.5rem;font-weight: normal;">
+                </h3>
+                <img src="{{product.thumbnail.url}}" style="height:6rem ;width: 8rem; border-radius: 10%;" class="mr-3 ml-3" alt="">
+                <h2 class="post-title  ">
+                  {{product.title}}
+                </h2>
+              </div>
+            </a>
+            <div class="row">
+              <p class="post-meta col-8 ">نوشته شده توسط:
+                {# <a class="text-dark" href="{% url 'blog:author' product.author %}">{{product.author.get_full_name}}</a> #}
+                {{product.jpublish}}
+              </p>
+              <div class="col-4 " style="padding-top:2rem" >
+
+                {% for cat in product.category.status_true  %}
+                  <a href="{%url 'product:product_category' cat.slug %}"> {{cat.title}}</a>
+                {% endfor %}
+              </div>
+            </div>
+            </div>
+          <hr>
+
+        {% endfor %}
+        <!-- Pager -->
+        {% if is_paginated %}
+          <div class="clearfix row " style="justify-content: center;">
+            {% if page_obj.has_previous %}
+              <a class="btn  float-left " style="background-color:gray;color:white;border-radius: 5%;" href="{% block paginator_prev %}{% endblock %}"> پست یعدی  &rarr;</a>
+            {% endif %}
+            {% if page_obj.has_next %}
+              <a class="btn  float-left ml-2 " style="background-color:gray;color:white;border-radius: 5%;" href=" {% block paginator_next %}{% endblock %}">پست  قبلی  &larr;</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+
+body{
+  font-family: "vazir"!important;
+  direction: ltr;
+  text-align: right;
+  
+}
+.navbar-nav.ml-auto{
+  margin-left: initial !important;
+
+}

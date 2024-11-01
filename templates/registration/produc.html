@@ -1,0 +1,74 @@
+{% extends "registration/base.html" %}
+{% block title %}
+لیست محصولات
+{% endblock %}
+{% block main %}
+      <div class="row">
+          <div class="col-12">
+            {% if products %}
+              <div class="card">
+              <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Iعنوان مقاله</th>
+                        <th>دسته بندی</th>
+                        <th>نویسنده</th>
+                        <th>تصویر</th>
+                        <th>آدرس</th>
+                        <th>توضیحات</th>
+                        <th>زمان انتشار</th>
+                        <th>وضعیت انتشار</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for product in products %}
+                        <tr>
+                          <td>
+                            {% if product.status == 'd' or user.is_superuser %}
+
+                            {% else %}
+                              {{product.title}}
+                            {% endif %}
+                            {{product.title}}
+                          </td>
+                          <td>{{product.category_to_str}}</td>
+                          <td>{{product.seller.get_full_name}}</td>
+                          <td><img src="{{product.thumbnail.url}}" style="width:125px"></td>
+                          <td>{{product.slug}}</td>
+                          <td>{{product.description|striptags|truncatewords:30}}</td>
+                          <td>{{product.jpublish}}</td>
+                          <td>
+                            {% if  product.status == 'p'%}
+                              <span class="badge badge-success">منتشر شده</span>
+                            {% else %}
+                              <span class="badge badge-danger">پیشنویس</span>
+
+                            {% endif %}
+                            {% if product.status == 'd' %}
+                            {% endif %}
+                            {% if user.is_superuser %}
+
+
+                            {% endif %}
+                            {% if product.status == 'p'  %}
+
+                            <a target="_blank" class="badge badge-info" href="{% url 'product:detail' product.slug %}">پیش نمایش مقاله در سایت</a>
+                            {% endif %}
+                            </td>
+                        </tr>
+                      {% endfor %}
+
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            {% else %}
+              <h3>محتوا برای نمایش وجود ندارد.</h3>
+            {% endif %}
+          </div>
+        </div>
+{% endblock %}

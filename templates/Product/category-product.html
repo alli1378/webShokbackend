@@ -1,0 +1,14 @@
+{% extends "Product/list.html" %}
+{% block header_category %}
+  <div>
+    <h3 class=" text-center mt-1" style="background:gray;height: 3rem ;">
+      {{category.title}}
+    </h3>
+  </div>
+{% endblock %}
+{% block paginator_prev %}
+  {% url 'product:product_category' category.slug page_obj.previous_page_number %}
+{% endblock %}
+{% block paginator_next %}
+  {% url 'product:product_category' category.slug page_obj.next_page_number %}
+{% endblock %}

@@ -1,0 +1,168 @@
+body{
+    font-family: "vazir";
+    text-align: right;
+    direction: rtl;
+}
+.jumb-head{
+    font-weight: 300;
+}
+.jumbotron{
+    page-break-after: 3rem;
+    padding-bottom: 3rem;
+    margin-top: 0;
+    background:linear-gradient(135deg,#C6FFDD 40%,#FBD786 60%) ;
+    /* background: linear-gradient(135deg,#1abc9c 20%,#2980b9 80%); */
+}
+@media(min-widht: 768){
+    .jumbotron{
+     
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}
+.jumbotron .container{
+    max-width: 40rem;
+}
+.container p:last-child{
+    margin-bottom: 0;
+}
+
+
+.card-rooket{
+    position: relative;
+    border-radius: 10%;
+    overflow: hidden;
+    margin-top: 0;
+    height:100% ;
+    width:100%;
+    background:#eaf4f480;
+}
+.card-rooket:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(#131424f8,rgb(156, 148, 148));
+    clip-path: circle(10rem at 20% 15% );
+}
+.card-rooket:hover:before{
+    clip-path: circle(21rem at 10% -15% )
+}
+.card-rooket:after{
+    content: '';
+    position: absolute;
+}
+.img-rooket{
+    position: relative;
+    
+    margin-right:3rem;
+    padding-top: 0;
+    transform:translateY(30%)rotate(20deg);
+}
+.card-rooket .img-rooket{
+    transition: 0.5s;
+    width: 36vh;
+    height: 36vh;
+    margin-top: -1rem;
+} 
+ .card-rooket:hover .img-rooket  {
+   transform: translate(0%,-23%)rotate(20deg) ;
+    
+
+ }
+.cir-color{
+    border-radius: 100%;
+    
+    width: 2rem ;
+    height: 2rem;
+    /* margin-left: .2rem; */
+}
+
+.cir-color1{
+    background-color: red;
+}
+.cir-color2{
+    background-color: blue;
+}
+.cir-color3{
+    background-color: #9bdc28;
+}
+.cir-color4{
+    background-color: gray;
+    
+}
+.cs-card{
+    margin-top: 1.5rem;
+} 
+@media (min-width: 760px) {
+    .card-rooket{
+        position: relative;
+       overflow: visible;
+      
+       height:60vh ;
+       /* width: 60vh; */
+       /* display: flex;
+       */
+    } 
+    .cs-card{
+        margin-top: -23rem;
+    } 
+    .cs-card .card-title{
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        font-size: 1.75rem;
+    }
+    /* .cs-card div {
+        margin-top: rem !important;
+    } */
+    .card-rooket:before{
+        content: '';
+        position: absolute;
+        
+        width: 100%;
+        height: 100%;
+        background: none;
+        clip-path: none;
+        
+    }
+    .card-rooket:hover:before{
+        clip-path: none
+    }
+    .card-rooket:after{
+        content: '';
+        position: absolute;
+    }
+    .img-rooket{
+        
+        margin-right: 1rem;
+        margin-top: 1.6rem;
+        width: 40vh;
+        height: 40vh;
+        padding-top: 0;
+        transform:translateY(30%)rotate(20deg);
+    }
+    .img-rook{
+        position: relative;
+        content:'Nike';
+        margin-right: 100%;
+        margin-top:3rem;
+        border-radius:10% 0% 0% 10% ;
+        background-image: linear-gradient(#131424f8,rgb(156, 148, 148));
+        width: 100%;
+        height: 22rem;
+    }
+    .card-rooket .img-rooket{
+        transition: 0.5s;
+        /* margin-right: -1rem; */
+        width: 42vh;
+        height: 42vh;    
+    } 
+     .card-rooket:hover .img-rooket  {
+       transform: translate(0%,-23%)rotate(20deg) ;
+        
+    
+     }
+    
+}
